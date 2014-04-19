@@ -1,0 +1,27 @@
+<div data-ng-controller="ListCntrl">
+	
+	<div>
+	<form data-ng-submit="addList()">
+    <input type="text" data-ng-model="newList.title">
+    <input type="submit">
+  	</form> 
+	</div>
+	
+	<div data-ng-repeat="list in lists" >
+    	<div ng-init="getTask($index)"></div>
+    </div>
+
+	<div>
+		<ul>
+			<li data-ng-repeat="list in lists">
+				{{list.title}}
+					<ul >
+						<li data-ng-repeat="task in tasks[$index]">
+							{{task.title}}	
+						</li>
+					</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+</div>

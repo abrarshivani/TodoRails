@@ -1,0 +1,13 @@
+<div ng-controller="EntryCntrl">
+  <form data-ng-submit="addTask()">
+    <input type="text" data-ng-model="newTask.title">
+    <input type="submit">
+  </form> 
+  <ul>
+  <li data-ng-repeat="task in tasks">{{task.title}}
+
+     <button data-ng-click="deleteTask($index)">Delete</button><br />
+   </li>
+  </ul>
+ </div>
+
