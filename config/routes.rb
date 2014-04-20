@@ -10,8 +10,9 @@ Todo::Application.routes.draw do
   get 'hello' => 'tasks#hello'
   get 'hi' => 'tasks#hi'
   
-
+  delete 'tasks' => 'tasks#destroyall'
   get 'static_pages/index' => 'static_pages#index'
+  get 'static_pages/task' => 'static_pages#task'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

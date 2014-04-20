@@ -1,13 +1,71 @@
-<div ng-controller="EntryCntrl">
-  <form data-ng-submit="addTask()">
-    <input type="text" data-ng-model="newTask.title">
-    <input type="submit">
-  </form> 
-  <ul>
-  <li data-ng-repeat="task in tasks">{{task.title}}
+<div class="container" data-ng-controller="EntryCntrl" data-ng-mouseover="count()">
 
-     <button data-ng-click="deleteTask($index)">Delete</button><br />
-   </li>
-  </ul>
- </div>
+<div class="row col-lg-6">
+<h3>Search : </h3>
+     <div class="input-group">
+      <input type="text" class="form-control" ng-model="search"> 
+    </div><!-- /input-group -->
+</div><!-- /.row -->
 
+
+ <h3>Your Progress</h3>
+  <div class="progress" >
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{complete/tasks.length*100}}%;" >
+    {{(complete/tasks.length) * 100}}
+  </div>
+</div>
+
+<br />
+
+<div data-ng-model="Myfilter" data-ng-init="Myfilter={completed:false}"></div>
+
+<div>
+  <ul class="nav nav-pills nav-stacked">
+  <li class="active">
+    <a >
+      <span class="badge pull-right">{{(tasks|filter:Myfilter).length}}</span>
+      Tasks
+    </a>
+  </li>
+</ul>
+</div>
+
+
+
+   <form ng-submit="addTask()">
+      <input type="text" ng-model="newTask.title" class="form-control" placeholder="New todo item goes here, then press Enter" focus>
+    </form>
+    <br>
+    
+    <br/>
+<br/>
+
+
+<div data-ng-model="Pending"> </div>
+<div data-ng-model="C"> </div>
+<div data-ng-model="ALL"> </div>
+<div data-ng-init="Pending='active'"></div>
+
+<ul class="nav nav-tabs" ng-model="filterby">
+  <li class="{{Pending}}">
+  <a data-ng-click="C=''; Pending='active';ALL='';Myfilter={completed:false}">Pending</a></li>
+  <li class="{{C}}"><a data-ng-click="C='active'; Pending='';ALL='';Myfilter={completed:true}">Completed</a></li>
+  <li class="{{ALL}}"><a data-ng-click="C=''; Pending='';ALL='active';Myfilter=''">ALL</a></li>
+</ul>
+<br />
+
+      
+      <div class="list-group">
+      <div class="list-group-item todo-item" ng-repeat="item in tasks | filter:search | filter:Myfilter | orderBy:'-created_at'" ng-class="{'todo-complete': item.completed}">
+        <span class="close" ng-click="deleteTask(item)">&times;</span>
+        <label>
+          <input type="checkbox" ng-model="item.completed" ng-click="update(item)">
+          <span ng-bind="item.title">This is the content of the Todo</span>
+
+          <h5>Created At : {{item.created_at}}<h5>
+        </label>
+      </div>
+    </div>
+    <div>
+ 
+  </div>

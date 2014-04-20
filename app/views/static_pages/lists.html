@@ -1,27 +1,27 @@
-<div data-ng-controller="ListCntrl">
-	
-	<div>
+<div class="container" data-ng-controller="ListCntrl">
+
+<ul class="nav nav-pills nav-stacked">
+  <li class="active">
+    <a>
+      <span class="badge pull-right">{{lists.length}}</span>
+      Lists
+    </a>
+  </li>
+</ul>
 	<form data-ng-submit="addList()">
-    <input type="text" data-ng-model="newList.title">
-    <input type="submit">
-  	</form> 
-	</div>
-	
-	<div data-ng-repeat="list in lists" >
-    	<div ng-init="getTask($index)"></div>
+    <input type="text" data-ng-model="newList.title" class="form-control" placeholder="New List item goes here, then press Enter" focus>
+     </form> 
+     <br>
+
+
+     <div class="list-group">
+      <div class="list-group-item todo-item" ng-repeat="list in lists">
+         <span class="close" ng-click="deleteList($index)">&times;</span>
+        <a data-ng-click="getTask(list.id)">
+         {{ list.title}} 
+        </a>
+      </div>
     </div>
 
-	<div>
-		<ul>
-			<li data-ng-repeat="list in lists">
-				{{list.title}}
-					<ul >
-						<li data-ng-repeat="task in tasks[$index]">
-							{{task.title}}	
-						</li>
-					</ul>
-			</li>
-		</ul>
-	</div>
-</div>
+
 </div>

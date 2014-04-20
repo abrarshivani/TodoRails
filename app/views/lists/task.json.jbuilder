@@ -1,3 +1,3 @@
 json.array!(@tasks) do |task|
-  json.extract! task, :id, :title , list_id
+  json.extract! task, :id, :title , list_id ,completed_at
 end

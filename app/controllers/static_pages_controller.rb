@@ -8,5 +8,8 @@ class StaticPagesController < ApplicationController
 		render 'lists'
 	end
 
+	def task
+		render 'tasks'
+	end
 
 end

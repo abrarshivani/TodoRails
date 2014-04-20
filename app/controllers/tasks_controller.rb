@@ -41,6 +41,8 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    @task.completed = !@task.completed
+    @task.save
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
@@ -60,7 +62,13 @@ class TasksController < ApplicationController
       format.html { redirect_to root_path }
       format.json { head :no_content }
     end
+  end
 
+  def destroyall
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -71,6 +79,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title)
+      params.require(:task).permit(:title,:list_id,:completed)
     end
 end
