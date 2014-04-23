@@ -1,4 +1,4 @@
-<div class="container" data-ng-controller="EntryCntrl" data-ng-mouseover="count()">
+<div class="container" data-ng-controller="EntryCntrl">
 
 <div class="row col-lg-6">
 <h3>Search : </h3>
@@ -10,8 +10,8 @@
 
  <h3>Your Progress</h3>
   <div class="progress" >
-  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{complete/tasks.length*100}}%;" >
-    {{(complete/tasks.length) * 100}}
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{(((tasks|filter:{completed:false}).length)/tasks.length) * 100}}%;" >
+    {{(((tasks|filter:{completed:false}).length)/tasks.length) * 100}}
   </div>
 </div>
 
