@@ -1,5 +1,7 @@
 Todo::Application.routes.draw do
 
+  resources :users
+
   resources :lists,defaults: {format: :json}
   get 'task/list/:id' => 'lists#tasks'
 
