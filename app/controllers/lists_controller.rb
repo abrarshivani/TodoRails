@@ -6,8 +6,10 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = User.find(session[:current_user_id]).lists
+    @lists = User.find(session[:current_user_id]-1).lists
   end
+
+  
 
   def tasks
   	@task =  @list.tasks

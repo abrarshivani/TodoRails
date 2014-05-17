@@ -1,3 +1,5 @@
+require 'Session.rb'
+
 class UsersController < ApplicationController
   before_action :set_user, only: [ :edit, :update, :destroy]
 
@@ -7,13 +9,25 @@ class UsersController < ApplicationController
   
   end
 
+  def login
+    @session = Session.new
+    @session.status = session[:current_user_id]
+    render json: @session
+  end
+
+  def logout
+    session[:current_user_id] = 1
+    render json: nil
+  end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.where(:email => params[:email])
     if(@user.size != 0)
-      session[:current_user_id] = @user[0].id
+      session[:current_user_id] = @user[0].id+1
+    else
+      session[:current_user_id] = nil
     end
     render json: @user[0]
   end
@@ -68,6 +82,9 @@ class UsersController < ApplicationController
   end
 
   private
+    def set_default_response_format
+      request.format = :json
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])

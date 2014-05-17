@@ -5,14 +5,23 @@ app = angular.module("Lists",["ngResource","ngAnimate"])
 app.factory "List", ($resource) -> 
 	$resource("/lists/:id",{id: "@id" },{update: {method: "PUT"}})
 
-@ListCntrl = (List,$scope,$resource,$location) -> 
+
+@ListCntrl = (List,Session,$scope,$resource,$location) -> 
 	$scope.lists = List.query()
 	$scope.tasks = []
 	
+
  $scope.getTask = (idx)->
  	$location.path('/list_task/'+idx);
  	
- 	
+ $scope.isLogin = ->
+ 	session = Session.get(->
+				status=session.status
+				if (status == undefined)
+					$location.path('/');
+				)
+
+
  $scope.addList = ->
  	list = List.save($scope.newList)
  	$scope.lists.unshift(list)

@@ -1,6 +1,9 @@
 Todo::Application.routes.draw do
 
+
   resources :users,defaults: {format: :json}
+  get 'user/session/login' => 'users#login'
+  get 'user/session/logout' => 'users#logout'
 
   resources :lists,defaults: {format: :json}
   get 'task/list/:id' => 'lists#tasks'
@@ -17,7 +20,9 @@ Todo::Application.routes.draw do
   get 'static_pages/index' => 'static_pages#login'
   get 'static_pages/task' => 'static_pages#task'
   get 'static_pages/list' => 'static_pages#list'
-  # The priority is based upon order of creation: first created -> highest priority.
+ 
+
+   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

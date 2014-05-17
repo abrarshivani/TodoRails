@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
 
@@ -8,9 +9,12 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+ 
+
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    
   end
 
   # GET /tasks/new

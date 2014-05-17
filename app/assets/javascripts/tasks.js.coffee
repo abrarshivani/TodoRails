@@ -1,12 +1,14 @@
 app = angular.module("Tasks",["ngResource","ngRoute"])
 
+
 app.factory "Task", ($resource) -> 
 	$resource("/tasks/:id",{id: "@id" },{update: {method: "PUT"}})
 
-@EntryCntrl = (Task,$scope,$resource,$routeParams) -> 
+@EntryCntrl = (Task,$scope,$resource,$routeParams,$location) -> 
 	$scope.tasks = $resource("/task/list/"+($routeParams.id)).query()  
 	$scope.complete = 0
 	$scope.progress = 0
+
 
  $scope.count = ->
  	$scope.complete = 0
@@ -35,4 +37,8 @@ app.factory "Task", ($resource) ->
  $scope.clearAll = -> 
  	task = Task.delete()
  	$scope.tasks = {} 
+ 
+ $scope.login = ->
+ 	if ($scope.tasks == null)
+ 		$location.path('/'); 		
  	

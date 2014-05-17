@@ -1,8 +1,12 @@
-<div data-ng-controller="UserCntrl">
+<span ng-controller="TodoCntrl" data-ng-init="check()">
+</span>
+<div data-ng-controller="UserCntrl" >
+
 	<form data-ng-submit="validate()"> 
 		Username : <input type="text" ng-model="newUser.email">
 		Password : <input type="password" ng-model="newUser.password">
 		<input type="submit">
 	</form>
-	<h1 ng-model="userid"> User Id : {{userid}} </h1>
+<div>
+	
 </div>
