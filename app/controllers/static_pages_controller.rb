@@ -4,7 +4,11 @@ class StaticPagesController < ApplicationController
 		render 'master'
 	end
 
-	def index
+	def login
+		render 'login'
+	end
+	
+	def list
 		render 'lists'
 	end
 

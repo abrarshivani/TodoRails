@@ -1,9 +1,10 @@
 Todo::Application.routes.draw do
 
-  resources :users
+  resources :users,defaults: {format: :json}
 
   resources :lists,defaults: {format: :json}
   get 'task/list/:id' => 'lists#tasks'
+  
 
   root 'static_pages#master'
   
@@ -13,8 +14,9 @@ Todo::Application.routes.draw do
   get 'hi' => 'tasks#hi'
   
   delete 'tasks' => 'tasks#destroyall'
-  get 'static_pages/index' => 'static_pages#index'
+  get 'static_pages/index' => 'static_pages#login'
   get 'static_pages/task' => 'static_pages#task'
+  get 'static_pages/list' => 'static_pages#list'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

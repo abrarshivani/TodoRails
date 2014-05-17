@@ -1,3 +1,15 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+app = angular.module("Users",["ngResource","ngRoute"])
+
+app.factory "User", ($resource) -> 
+	$resource("/users/:id",{id: "@id" },{update: {method: "PUT"}})
+
+
+@UserCntrl = (User,$scope,$resource,$location) ->
+	$scope.validate = ->
+		$scope.newUser.id=0
+		user = User.get($scope.newUser, ->
+			$scope.newUser=user
+			if(user.id != undefined)
+				$location.path('/list/');
+			)
+
