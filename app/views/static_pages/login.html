@@ -1,12 +1,17 @@
 <span ng-controller="TodoCntrl" data-ng-init="check()">
 </span>
-<div data-ng-controller="UserCntrl" >
 
+<div data-ng-controller="UserCntrl" data-ng-hide="test" ng-model="invalid">
+
+<h2 data-ng-show="invalid">Invalid Username/Password</h2>
 	<form data-ng-submit="validate()"> 
 		Username : <input type="text" ng-model="newUser.email">
 		Password : <input type="password" ng-model="newUser.password">
 		<input type="submit">
 	</form>
+	<div>
+	<a data-ng-click="loadreg()">Register</a>
+	</div>
 <div>
 	
 </div>

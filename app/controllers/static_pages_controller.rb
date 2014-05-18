@@ -16,4 +16,8 @@ class StaticPagesController < ApplicationController
 		render 'tasks'
 	end
 
+	def reg
+		render 'reg'
+	end
+
 end

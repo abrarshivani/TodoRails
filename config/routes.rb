@@ -5,6 +5,8 @@ Todo::Application.routes.draw do
   get 'user/session/login' => 'users#login'
   get 'user/session/logout' => 'users#logout'
 
+  get 'static_pages/reg' => 'static_pages#reg'
+
   resources :lists,defaults: {format: :json}
   get 'task/list/:id' => 'lists#tasks'
   

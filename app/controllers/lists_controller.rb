@@ -37,6 +37,8 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
+        index
+        @lists << @list
         format.html { redirect_to @list, notice: 'List was successfully created.' }
         format.json { render action: 'show', status: :created, location: @list }
       else

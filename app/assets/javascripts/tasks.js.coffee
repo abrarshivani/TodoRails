@@ -9,6 +9,9 @@ app.factory "Task", ($resource) ->
 	$scope.complete = 0
 	$scope.progress = 0
 
+ $scope.redirect = ->
+ 	if ($scope.test is false)
+ 		$location.path('/')
 
  $scope.count = ->
  	$scope.complete = 0

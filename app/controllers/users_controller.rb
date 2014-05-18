@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.where(:email => params[:email])
+    @user = User.where(:email => params[:email],:password => params[:password])
     if(@user.size != 0)
       session[:current_user_id] = @user[0].id+1
     else
@@ -34,7 +34,8 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = nil
+    render json: @user
   end
 
   # GET /users/1/edit
@@ -50,9 +51,11 @@ class UsersController < ApplicationController
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
+        session[:current_user_id] = @user.id+1
       else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        @user = User.new       
+        format.json { render action: 'new', status: :created }
+    
       end
     end
   end
