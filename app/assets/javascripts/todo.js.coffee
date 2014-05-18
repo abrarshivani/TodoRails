@@ -17,7 +17,7 @@ app.config ($routeProvider) ->
   $routeProvider.otherwise redirectTo: '/'
 
 @TodoCntrl = (Session,Sessionout,$scope,$cookies,$resource,$location,$route) ->  
- 
+ $scope.name=""
  $scope.isLogin = ->
   session = Session.get(->
         status=session.status
@@ -35,9 +35,9 @@ app.config ($routeProvider) ->
               $location.path($location.path())
         )
 
- $scope.login = ->
-    
-    $log=log=$cookies.login
+ $scope.login = -> 
+    $scope.name = $cookies.username
+    log=$cookies.login
     console.log($cookies.login)
     $scope.test = false
     if (log == 'false' || log==undefined)
@@ -59,4 +59,5 @@ app.config ($routeProvider) ->
     Sessionout.save()
     $scope.test = false
     $cookies.login='false'
+    $cookies.username = '';
     $location.path('/')

@@ -19,7 +19,9 @@ app.factory "Sessionout", ($resource) ->
 			if(user.id != undefined)
 				$location.path('/list/');
 				$cookies.login ='true';
+				$cookies.username = user.email;
 			else
+				$cookies.username = '';
 				$scope.invalid = true;
 			)
 
