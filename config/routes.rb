@@ -3,7 +3,7 @@ Todo::Application.routes.draw do
 
   resources :users,defaults: {format: :json}
   get 'user/session/login' => 'users#login'
-  get 'user/session/logout' => 'users#logout'
+  post 'user/session/logout' => 'users#logout'
 
   get 'static_pages/reg' => 'static_pages#reg'
 

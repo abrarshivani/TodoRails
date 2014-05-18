@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   def login
     @session = Session.new
     @session.status = session[:current_user_id]
+    fresh_when last_modified: Time.now
     render json: @session
   end
-
   def logout
-    session[:current_user_id] = 1
+    session[:current_user_id] = nil
     render json: nil
   end
 

@@ -1,4 +1,4 @@
-app = angular.module("Users",["ngResource","ngRoute"])
+app = angular.module("Users",["ngResource","ngRoute","ngCookies"])
 
 app.factory "User", ($resource) -> 
 	$resource("/users/:id",{id: "@id" },{update: {method: "PUT"}})
@@ -9,7 +9,7 @@ app.factory "Sessionout", ($resource) ->
 
 
 
-@UserCntrl = (User,Sessionout,$scope,$resource,$location) ->
+@UserCntrl = (User,Sessionout,$cookies,$scope,$resource,$location) ->
 	$scope.exist = true
 	$scope.invalid = false
 	$scope.validate = ->
@@ -18,7 +18,9 @@ app.factory "Sessionout", ($resource) ->
 			$scope.newUser=user
 			if(user.id != undefined)
 				$location.path('/list/');
-			$scope.invalid = true;
+				$cookies.login ='true';
+			else
+				$scope.invalid = true;
 			)
 
 	$scope.reg = ->
@@ -32,11 +34,5 @@ app.factory "Sessionout", ($resource) ->
 	$scope.loadreg = ->
 		$location.path("/reg");		
 				
-
-
-	$scope.logout  = ->
-		Sessionout.get()
-		$route.reload()
- 	
 		
 							
