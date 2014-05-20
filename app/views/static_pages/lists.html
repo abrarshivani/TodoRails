@@ -1,5 +1,5 @@
 
-<div class="container" data-ng-controller="ListCntrl"  ng-show="test">
+<div class="container" data-ng-controller="ListCntrl"  ng-show="test" data-ng-init="init()">
 
 <ul class="nav nav-pills nav-stacked">
   <li class="active">
@@ -17,13 +17,20 @@
 
 
      <div class="list-group">
-      <div class="list-group-item todo-item" ng-repeat="list in lists">
+      <div class="list-group-item todo-item" ng-repeat="list in listp">
          <span class="close" ng-click="deleteList($index)">&times;</span>
         <a data-ng-click="getTask(list.id)">
          {{ list.title}} 
         </a>
       </div>
     </div>
-
+<ul class="pagination">
+  <li><a a data-ng-click="load(index-1)">&laquo;</a></li>
+  <li ng-repeat="i in range track by $index">
+    <a data-ng-click="load($index+1)">         {{$index+1}}
+    </a>
+  </li>
+  <li><a data-ng-click="load(index+1)">&raquo;</a></li>
+  </ul>
 
 </div>

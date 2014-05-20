@@ -6,7 +6,7 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = User.find(session[:current_user_id]-1).lists
+    @lists = User.find(session[:current_user_id]-1).lists.reverse
   end
 
   
@@ -34,10 +34,9 @@ class ListsController < ApplicationController
   # POST /lists.json
   def create
     @list = List.new(list_params)
-
+    @lists = User.find(session[:current_user_id]-1).lists
     respond_to do |format|
       if @list.save
-        index
         @lists << @list
         format.html { redirect_to @list, notice: 'List was successfully created.' }
         format.json { render action: 'show', status: :created, location: @list }
