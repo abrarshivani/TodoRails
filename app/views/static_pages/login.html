@@ -1,17 +1,85 @@
 <span ng-controller="TodoCntrl" data-ng-init="check()">
 </span>
 
+<div class="title">
+	  <h2>Welcome to our website</h2>
+	</div>
+	<div id="banner" class="container"><img src="assets/banner.jpg" width="800" height="400" alt="" /></div></center>
+<br><br><br>
+<div class="container">
+<span ng-controller="TodoCntrl" data-ng-init="check()">
+</span>
+            <div class="panel panel-default">
+                <div class="panel-heading"> <strong class="">Login</strong>
+
+            </div>
+<div class="panel-body">
+
+
 <div data-ng-controller="UserCntrl" data-ng-hide="test" ng-model="invalid">
+
 
 <h2 data-ng-show="invalid">Invalid Username/Password</h2>
 	<form data-ng-submit="validate()"> 
-		Username : <input type="text" ng-model="newUser.email">
-		Password : <input type="password" ng-model="newUser.password">
-		<input type="submit">
-	</form>
+		<div class="col-lg-6">
+			<input type="email" class="form-control" ng-model="newUser.email" placeholder="Email id">
+		</div>	
+		<div class="col-lg-6">
+			<input type="password" class="form-control" ng-model="newUser.password" placeholder="Password">
+		</div><br>	
+		<button class="btn btn-default navbar-btn" type="submit">Sign in</button>
+		
+	</form><br>
 	<div>
 	<a data-ng-click="loadreg()">Register</a>
 	</div>
 <div>
+
+<div id="feature">
+	<div id="three-column" class="container">
+		<div><span class="arrow-down"></span></div>
+		<div id="tbox1">
+			<div class="title">
+				<h2>Sub tasks</h2>
+			</div>
+			<p>Achieve more by breaking big tasks into smaller sub-tasks (multi-level).</p>
+			</div>
+		<div id="tbox2">
+			<div class="title">
+				<h2>Visualize your productivity</h2>
+			</div>
+			<p>With Todoist Karma you can track your productivity and visualize your productivity trends over time.</p>
+			</div>
+		<div id="tbox3">
+			<div class="title">
+				<h2>Sub projects</h2>
+			</div>
+			<p>Manage complexity by breaking big projects into smaller sub-projects (multi-level).</p>
+		 </div>
+	</div>
+</div>
+	<div id="three-column" class="container">
+		<div><span class="arrow-down"></span></div>
+		<h2><strong>Technologies Used</strong></h2><hr>
+		<div id="tbox1">
+			<div class="title">
+				<h2>Ruby On Rails</h2>
+			</div>
+			<p>Ruby is a dynamic, reflective, object-oriented, general-purpose programming language.Ruby on Rails is a breakthrough in lowering the barriers of entry to programming.</p>
+			</div>
+		<div id="tbox2">
+			<div class="title">
+				<h2>AngularJs</h2>
+			</div>
+			<p>The framework adapts and extends traditional HTML to better serve dynamic content through two-way data-binding that allows for the automatic synchronization of models and views.</p>
+			</div>
+		<div id="tbox3">
+			<div class="title">
+				<h2>HTML 5 And CSS</h2>
+			</div>
+			<p>In addition to specifying markup, HTML5 specifies scripting application programming interfaces (APIs) that can be used with JavaScript.Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup language.</p>
+		 </div>
+	</div>
+
 	
 </div>

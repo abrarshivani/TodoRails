@@ -18,12 +18,14 @@
 
      <div class="list-group">
       <div class="list-group-item todo-item" ng-repeat="list in listp">
-         <span class="close" ng-click="deleteList($index)">&times;</span>
+         <span class="close" ng-click="deleteList(list)">&times;</span>
         <a data-ng-click="getTask(list.id)">
          {{ list.title}} 
         </a>
       </div>
     </div>
+
+
 <ul class="pagination">
   <li><a a data-ng-click="load(index-1)">&laquo;</a></li>
   <li ng-repeat="i in range track by $index">

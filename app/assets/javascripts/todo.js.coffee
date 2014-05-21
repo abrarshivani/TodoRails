@@ -61,3 +61,6 @@ app.config ($routeProvider) ->
     $cookies.login='false'
     $cookies.username = '';
     $location.path('/')
+
+  $scope.home  = ->
+    $location.path('/')

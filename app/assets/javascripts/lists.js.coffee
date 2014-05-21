@@ -11,11 +11,15 @@ app.factory "List", ($resource) ->
 	$scope.index = 1
 
  $scope.load = (idx)->
- 	maxidx = Math.ceil($scope.lists.length / 2) 
+ 	maxidx = Math.ceil($scope.lists.length / 2)
+ 	console.log(maxidx)
+ 	if maxidx == 0
+ 		maxidx=1
  	if idx>0 and idx<=maxidx
  		$scope.listp = ($scope.lists[(idx-1)*2...(idx)*2])
  		$scope.range = new Array(maxidx)
  		$scope.index = idx
+ 	console.log(idx)
 
  $scope.init = ->
 	$scope.lists = List.query(->
@@ -40,8 +44,8 @@ app.factory "List", ($resource) ->
  	$scope.load(1)
 
  $scope.deleteList = (idx)-> 
- 	list = List.delete({id: $scope.lists[idx].id}) 
- 	$scope.lists.splice(idx,1)
+ 	list = List.delete({id: idx.id})
+ 	$scope.lists.splice($scope.lists.indexOf(idx),1)
  	$scope.load(1)
 
  $scope.showTask = (idx)-> 

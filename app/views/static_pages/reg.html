@@ -1,11 +1,37 @@
 
+
 <div data-ng-controller="UserCntrl" ng-model="exist" ng-hide="test">
-	<h3 ng-hide="exist">Email Exist</h3>
-	<form data-ng-submit="reg()"> 
-		Enter Email : <input type="text" ng-model="newUser.email">
-		Enter Password : <input type="password" ng-model="newUser.password">
-		<input type="submit">
+
+	<div class="clearfix">
+			<div class="panel panel-default">
+               <div class="panel-heading"> <strong class=""><h3>Fill the following details for Sign up</h3>	</strong>
+        </div>
+       <h3 ng-hide="exist">Email Already Exist</h3>
+
+ <form data-ng-submit="reg()"> 
+<div class="panel-body">
+			<div class="col-lg-6">
+			<input type="email" class="form-control" ng-model="newUser.email" placeholder="Enter Your Email id"><br>
+			</div>
+			<div class="col-lg-6">
+			<input type="password" class="form-control" ng-model="newUser.password" placeholder="Create a Password"><br>
+			</div>
+			<div class="col-lg-6">
+			<input type="password" class="form-control" ng-model="newUser.passwordAgain" placeholder="Enter Password Again"><br>
+			</div>
+			<div class="col-lg-6">
+		</div>
+		</div>	
+
+		<button class="btn primary btn-lg" type="submit">Sign up</button>
+		</fieldset>
 	</form>
+	</div>
+</div>
+</div>
 <div>
+	
+</div>              
+            
 	
 </div>

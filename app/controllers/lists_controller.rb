@@ -42,7 +42,7 @@ class ListsController < ApplicationController
         format.json { render action: 'show', status: :created, location: @list }
       else
         format.html { render action: 'new' }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
+        format.json { render json: @list.errors, status: :unprocessable_entity}
       end
     end
   end

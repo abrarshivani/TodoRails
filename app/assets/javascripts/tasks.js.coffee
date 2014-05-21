@@ -23,18 +23,18 @@ app.factory "Task", ($resource) ->
  $scope.addTask = ->
  	$scope.newTask.completed = false
  	$scope.newTask.list_id = $routeParams.id
- 	task = Task.save($scope.newTask)
- 	$scope.tasks.push(task)
- 	$scope.newTask = {} 
-
+ 	task = Task.save($scope.newTask,->
+ 		$scope.tasks.unshift(task)
+ 		$scope.newTask = {} 
+ 	)
 
  $scope.update = (item)->
  	Task.update({id: item.id})
 
 
  $scope.deleteTask = (item)-> 
- 	$scope.tasks.splice($scope.tasks.indexOf(item),1)
- 	task = Task.delete({id: item.id}) 
+ 	task = Task.delete({id: item.id})
+ 	$scope.tasks.splice($scope.tasks.indexOf(item),1) 
  	
 
  $scope.clearAll = -> 

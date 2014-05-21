@@ -12,7 +12,12 @@ app.factory "Sessionout", ($resource) ->
 @UserCntrl = (User,Sessionout,$cookies,$scope,$resource,$location) ->
 	$scope.exist = true
 	$scope.invalid = false
+	
 	$scope.validate = ->
+		if ($scope.newUser is undefined)
+			alert ("Enter detail");
+			return
+
 		$scope.newUser.id=0
 		user = User.get($scope.newUser, ->
 			$scope.newUser=user
@@ -26,12 +31,19 @@ app.factory "Sessionout", ($resource) ->
 			)
 
 	$scope.reg = ->
+		if($scope.newUser == undefined || $scope.newUser.password isnt $scope.newUser.passwordAgain || $scope.newUser.password == undefined)
+			alert "Check password"
+			return
+
+	
 		user = User.save($scope.newUser,->
 			if(user.email == null)
 				$scope.exist = false
 			else
-				$location.path("/list");		
-			)
+				$location.path('/list/');
+				$cookies.login ='true';
+				$cookies.username = user.email;		
+		)
 
 	$scope.loadreg = ->
 		$location.path("/reg");		
