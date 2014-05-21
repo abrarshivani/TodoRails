@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   
   end
 
+ 
+
   def login
     @session = Session.new
     @session.status = session[:current_user_id]

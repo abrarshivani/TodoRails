@@ -35,6 +35,8 @@
 
    <form ng-submit="addTask()">
       <input type="text" ng-model="newTask.title" class="form-control" placeholder="New todo item goes here, then press Enter" focus>
+       <span>Due (date and time): <input type="datetime-local" ng-model="newTask.due"></span>
+        
     </form>
     <br>
     
@@ -58,12 +60,15 @@
       
       <div class="list-group">
       <div class="list-group-item todo-item" ng-repeat="item in tasks | filter:search | filter:Myfilter | orderBy:'-created_at'" ng-class="{'todo-complete': item.completed}">
+        
+       
         <span class="close" ng-click="deleteTask(item)">&times;</span>
         <label>
+
           <input type="checkbox" ng-model="item.completed" ng-click="update(item)">
           <span ng-bind="item.title">This is the content of the Todo</span>
 
-          <h5>Created At : {{item.created_at}}<h5>
+          <h5>Due At : {{item.due}}<h5>
         </label>
       </div>
     </div>
