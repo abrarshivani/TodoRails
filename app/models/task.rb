@@ -4,9 +4,9 @@ class Task < ActiveRecord::Base
 	def self.test
 		@tasks = Task.all
 		@tasks.each do |task|
-			if (task.list != nil)
+			if (task.completed== false and task.list != nil)
 				if (task.list.user != nil and task.due != nil)
-					if ((task.due-Time.now)/1.day <= 1 and (task.due - Time.now )/1.day >= 0)
+					if ( (DateTime.parse(task.due.strftime("%c")) - DateTime.parse(Time.now.strftime("%c"))) <= 1 and (DateTime.parse(task.due.strftime("%c")) - DateTime.parse(Time.now.strftime("%c"))) >= 0)
 								UserMailer.reminder(task.list.user,task).deliver
 					end
 				end
